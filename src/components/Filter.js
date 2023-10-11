@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Filter({ onCategoryChange, onSearchChange }) {
-  const [searchText, setSearchText] = useState("testing");
-
+function Filter({ search, onSearchChange, onCategoryChange }) {
   function handleSearchChange(event) {
-    const text = event.target.value;
-    setSearchText(text);
-    onSearchChange(text);
+    onSearchChange(event.target.value);
   }
- return (
+
+  return (
     <div className="Filter">
       <input
         type="text"
         name="search"
         placeholder="Search..."
-        value={searchText}
+        value={search}
         onChange={handleSearchChange}
       />
       <select name="filter" onChange={onCategoryChange}>
@@ -28,4 +25,3 @@ function Filter({ onCategoryChange, onSearchChange }) {
 }
 
 export default Filter;
-

@@ -13,13 +13,13 @@ function ItemForm({ onItemFormSubmit }) {
       name: itemName,
       category: itemCategory,
     };
-    
+
     onItemFormSubmit(newItem);
 
+    // Clear the form
     setItemName("");
     setItemCategory("Produce");
   }
-
   return (
     <form className="NewItem" onSubmit={handleSubmit}>
       <label>
