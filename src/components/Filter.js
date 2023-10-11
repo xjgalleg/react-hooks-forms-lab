@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Filter({ onCategoryChange }) {
-  return (
+function Filter({ onCategoryChange, onSearchChange }) {
+  const [searchText, setSearchText] = useState("testing");
+
+  function handleSearchChange(event) {
+    const text = event.target.value;
+    setSearchText(text);
+    onSearchChange(text);
+  }
+ return (
     <div className="Filter">
-      <input type="text" name="search" placeholder="Search..." />
+      <input
+        type="text"
+        name="search"
+        placeholder="Search..."
+        value={searchText}
+        onChange={handleSearchChange}
+      />
       <select name="filter" onChange={onCategoryChange}>
         <option value="All">Filter by category</option>
         <option value="Produce">Produce</option>
@@ -15,3 +28,4 @@ function Filter({ onCategoryChange }) {
 }
 
 export default Filter;
+
